@@ -8,6 +8,11 @@
 
 **Выполнение:**
 
+**Скрипт с выполнением ДЗ, и вывод всех команд в приложенных файлах: 
+[systemd.sh](https://github.com/hellolightSP/otus_hw8/blob/main/systemd.sh),
+[otus_hw7_systemd](https://github.com/hellolightSP/otus_hw8/blob/main/otus_hw7_systemd)**
+
+
 Добавляю источник репозиториев для Centos 8, с mirrors по умолчанию ничего не устанавливается 
 ```
 sudo sed -i -e "s|mirrorlist=|#mirrorlist=|g" /etc/yum.repos.d/CentOS-*
