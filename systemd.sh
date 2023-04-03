@@ -86,7 +86,7 @@ KillMode=process
 WantedBy=multi-user.target
 EOF
 
-systemctl daemon reload
+systemctl daemon-reload
 systemctl start spawn-fcgi
 systemctl status spawn-fcgi
 
