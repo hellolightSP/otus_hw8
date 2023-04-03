@@ -1,0 +1,323 @@
+Bringing machine 'systemd' up with 'virtualbox' provider...
+==> systemd: Importing base box 'centos/8'...
+[KProgress: 20%[KProgress: 50%[KProgress: 70%[KProgress: 90%[K==> systemd: Matching MAC address for NAT networking...
+==> systemd: Setting the name of the VM: test_vm_systemd_1680537492134_19835
+==> systemd: Clearing any previously set network interfaces...
+==> systemd: Preparing network interfaces based on configuration...
+    systemd: Adapter 1: nat
+==> systemd: Forwarding ports...
+    systemd: 22 (guest) => 2222 (host) (adapter 1)
+==> systemd: Running 'pre-boot' VM customizations...
+==> systemd: Booting VM...
+==> systemd: Waiting for machine to boot. This may take a few minutes...
+    systemd: SSH address: 127.0.0.1:2222
+    systemd: SSH username: vagrant
+    systemd: SSH auth method: private key
+    systemd: 
+    systemd: Vagrant insecure key detected. Vagrant will automatically replace
+    systemd: this with a newly generated keypair for better security.
+    systemd: 
+    systemd: Inserting generated public key within guest...
+    systemd: Removing insecure key from the guest if it's present...
+    systemd: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> systemd: Machine booted and ready!
+==> systemd: Checking for guest additions in VM...
+    systemd: No guest additions were detected on the base box for this VM! Guest
+    systemd: additions are required for forwarded ports, shared folders, host only
+    systemd: networking, and more. If SSH fails on this machine, please install
+    systemd: the guest additions and repackage the box to continue.
+    systemd: 
+    systemd: This is not an error message; everything may continue to work properly,
+    systemd: in which case you may ignore this message.
+==> systemd: Setting hostname...
+==> systemd: Running provisioner: shell...
+    systemd: Running: /tmp/vagrant-shell20230403-35020-8qh41h.sh
+    systemd: + sudo sed -i -e 's|mirrorlist=|#mirrorlist=|g' /etc/yum.repos.d/CentOS-Linux-AppStream.repo /etc/yum.repos.d/CentOS-Linux-BaseOS.repo /etc/yum.repos.d/CentOS-Linux-ContinuousRelease.repo /etc/yum.repos.d/CentOS-Linux-Debuginfo.repo /etc/yum.repos.d/CentOS-Linux-Devel.repo /etc/yum.repos.d/CentOS-Linux-Extras.repo /etc/yum.repos.d/CentOS-Linux-FastTrack.repo /etc/yum.repos.d/CentOS-Linux-HighAvailability.repo /etc/yum.repos.d/CentOS-Linux-Media.repo /etc/yum.repos.d/CentOS-Linux-Plus.repo /etc/yum.repos.d/CentOS-Linux-PowerTools.repo /etc/yum.repos.d/CentOS-Linux-Sources.repo
+    systemd: + sudo sed -i -e 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-Linux-AppStream.repo /etc/yum.repos.d/CentOS-Linux-BaseOS.repo /etc/yum.repos.d/CentOS-Linux-ContinuousRelease.repo /etc/yum.repos.d/CentOS-Linux-Debuginfo.repo /etc/yum.repos.d/CentOS-Linux-Devel.repo /etc/yum.repos.d/CentOS-Linux-Extras.repo /etc/yum.repos.d/CentOS-Linux-FastTrack.repo /etc/yum.repos.d/CentOS-Linux-HighAvailability.repo /etc/yum.repos.d/CentOS-Linux-Media.repo /etc/yum.repos.d/CentOS-Linux-Plus.repo /etc/yum.repos.d/CentOS-Linux-PowerTools.repo /etc/yum.repos.d/CentOS-Linux-Sources.repo
+    systemd: + cat
+    systemd: + echo 'ALERT test log message'
+    systemd: + cat
+    systemd: + sed -i -e 's/DATE=/DATE=`date`/g' /opt/watchlog.sh
+    systemd: + chmod +x /opt/watchlog.sh
+    systemd: + cat
+    systemd: + cat
+    systemd: + systemctl daemon-reload
+    systemd: + systemctl start watchlog.timer
+    systemd: + systemctl start watchlog.service
+    systemd: + systemctl enable watchlog.timer
+    systemd: Created symlink /etc/systemd/system/multi-user.target.wants/watchlog.timer → /etc/systemd/system/watchlog.timer.
+    systemd: + systemctl status watchlog.service
+    systemd: ● watchlog.service - My watchlog service
+    systemd:    Loaded: loaded (/etc/systemd/system/watchlog.service; static; vendor preset: disabled)
+    systemd:    Active: inactive (dead) since Mon 2023-04-03 15:58:48 UTC; 147ms ago
+    systemd:  Main PID: 2638 (code=exited, status=0/SUCCESS)
+    systemd: 
+    systemd: Apr 03 15:58:47 systemd systemd[1]: Starting My watchlog service...
+    systemd: Apr 03 15:58:48 systemd systemd[1]: watchlog.service: Succeeded.
+    systemd: Apr 03 15:58:48 systemd systemd[1]: Started My watchlog service.
+    systemd: + yum install -y epel-release
+    systemd: CentOS Linux 8 - AppStream                      3.5 MB/s | 8.4 MB     00:02
+    systemd: CentOS Linux 8 - BaseOS                         5.0 MB/s | 4.6 MB     00:00
+    systemd: CentOS Linux 8 - Extras                          30 kB/s |  10 kB     00:00
+    systemd: Last metadata expiration check: 0:00:01 ago on Mon 03 Apr 2023 03:58:55 PM UTC.
+    systemd: Dependencies resolved.
+    systemd: ================================================================================
+    systemd:  Package               Architecture    Version            Repository       Size
+    systemd: ================================================================================
+    systemd: Installing:
+    systemd:  epel-release          noarch          8-11.el8           extras           24 k
+    systemd: 
+    systemd: Transaction Summary
+    systemd: ================================================================================
+    systemd: Install  1 Package
+    systemd: 
+    systemd: Total download size: 24 k
+    systemd: Installed size: 35 k
+    systemd: Downloading Packages:
+    systemd: epel-release-8-11.el8.noarch.rpm                151 kB/s |  24 kB     00:00
+    systemd: --------------------------------------------------------------------------------
+    systemd: Total                                           146 kB/s |  24 kB     00:00
+    systemd: warning: /var/cache/dnf/extras-841cbf2e55745cba/packages/epel-release-8-11.el8.noarch.rpm: Header V3 RSA/SHA256 Signature, key ID 8483c65d: NOKEY
+    systemd: CentOS Linux 8 - Extras                         1.6 MB/s | 1.6 kB     00:00
+    systemd: Importing GPG key 0x8483C65D:
+    systemd:  Userid     : "CentOS (CentOS Official Signing Key) <security@centos.org>"
+    systemd:  Fingerprint: 99DB 70FA E1D7 CE22 7FB6 4882 05B5 55B3 8483 C65D
+    systemd:  From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+    systemd: Key imported successfully
+    systemd: Running transaction check
+    systemd: Transaction check succeeded.
+    systemd: Running transaction test
+    systemd: Transaction test succeeded.
+    systemd: Running transaction
+    systemd:   Preparing        :                                                        1/1
+    systemd:   Installing       : epel-release-8-11.el8.noarch                           1/1
+    systemd:   Running scriptlet: epel-release-8-11.el8.noarch                           1/1
+    systemd:   Verifying        : epel-release-8-11.el8.noarch                           1/1
+    systemd: 
+    systemd: Installed:
+    systemd:   epel-release-8-11.el8.noarch
+    systemd: 
+    systemd: Complete!
+    systemd: + yum install -y spawn-fcgi php php-cli
+    systemd: Extra Packages for Enterprise Linux Modular 8 - 802 kB/s | 733 kB     00:00
+    systemd: Extra Packages for Enterprise Linux 8 - x86_64  4.5 MB/s |  14 MB     00:03
+    systemd: Module yaml error: Unexpected key in data: static_context [line 9 col 3]
+    systemd: Module yaml error: Unexpected key in data: static_context [line 9 col 3]
+    systemd: Module yaml error: Unexpected key in data: static_context [line 9 col 3]
+    systemd: Module yaml error: Unexpected key in data: static_context [line 9 col 3]
+    systemd: Module yaml error: Unexpected key in data: static_context [line 9 col 3]
+    systemd: Module yaml error: Unexpected key in data: static_context [line 9 col 3]
+    systemd: Module yaml error: Unexpected key in data: static_context [line 9 col 3]
+    systemd: Module yaml error: Unexpected key in data: static_context [line 9 col 3]
+    systemd: Dependencies resolved.
+    systemd: ================================================================================
+    systemd:  Package          Arch   Version                                Repo       Size
+    systemd: ================================================================================
+    systemd: Installing:
+    systemd:  php              x86_64 7.2.24-1.module_el8.2.0+313+b04d0a66   appstream 1.5 M
+    systemd:  php-cli          x86_64 7.2.24-1.module_el8.2.0+313+b04d0a66   appstream 3.1 M
+    systemd:  spawn-fcgi       x86_64 1.6.3-17.el8                           epel       24 k
+    systemd: Installing dependencies:
+    systemd:  apr              x86_64 1.6.3-12.el8                           appstream 129 k
+    systemd:  apr-util         x86_64 1.6.1-6.el8                            appstream 105 k
+    systemd:  centos-logos-httpd
+    systemd:                   noarch 85.8-2.el8                             baseos     75 k
+    systemd:  httpd            x86_64 2.4.37-43.module_el8.5.0+1022+b541f3b1 appstream 1.4 M
+    systemd:  httpd-filesystem noarch 2.4.37-43.module_el8.5.0+1022+b541f3b1 appstream  39 k
+    systemd:  httpd-tools      x86_64 2.4.37-43.module_el8.5.0+1022+b541f3b1 appstream 107 k
+    systemd:  mailcap          noarch 2.1.48-3.el8                           baseos     39 k
+    systemd:  mod_http2        x86_64 1.15.7-3.module_el8.4.0+778+c970deab   appstream 154 k
+    systemd:  nginx-filesystem noarch 1:1.14.1-9.module_el8.0.0+184+e34fea82 appstream  24 k
+    systemd:  php-common       x86_64 7.2.24-1.module_el8.2.0+313+b04d0a66   appstream 661 k
+    systemd: Installing weak dependencies:
+    systemd:  apr-util-bdb     x86_64 1.6.1-6.el8                            appstream  25 k
+    systemd:  apr-util-openssl x86_64 1.6.1-6.el8                            appstream  27 k
+    systemd:  php-fpm          x86_64 7.2.24-1.module_el8.2.0+313+b04d0a66   appstream 1.6 M
+    systemd: Enabling module streams:
+    systemd:  httpd                   2.4
+    systemd:  nginx                   1.14
+    systemd:  php                     7.2
+    systemd: 
+    systemd: Transaction Summary
+    systemd: ================================================================================
+    systemd: Install  16 Packages
+    systemd: 
+    systemd: Total download size: 9.0 M
+    systemd: Installed size: 31 M
+    systemd: Downloading Packages:
+    systemd: (1/16): apr-util-bdb-1.6.1-6.el8.x86_64.rpm     132 kB/s |  25 kB     00:00
+    systemd: (2/16): apr-1.6.3-12.el8.x86_64.rpm             638 kB/s | 129 kB     00:00
+    systemd: (3/16): apr-util-1.6.1-6.el8.x86_64.rpm         501 kB/s | 105 kB     00:00
+    systemd: (4/16): apr-util-openssl-1.6.1-6.el8.x86_64.rpm 452 kB/s |  27 kB     00:00
+    systemd: (5/16): httpd-filesystem-2.4.37-43.module_el8.5 678 kB/s |  39 kB     00:00
+    systemd: (6/16): httpd-tools-2.4.37-43.module_el8.5.0+10 1.0 MB/s | 107 kB     00:00
+    systemd: (7/16): nginx-filesystem-1.14.1-9.module_el8.0. 381 kB/s |  24 kB     00:00
+    systemd: (8/16): mod_http2-1.15.7-3.module_el8.4.0+778+c 1.0 MB/s | 154 kB     00:00
+    systemd: (9/16): httpd-2.4.37-43.module_el8.5.0+1022+b54 4.5 MB/s | 1.4 MB     00:00
+    systemd: (10/16): php-common-7.2.24-1.module_el8.2.0+313 2.1 MB/s | 661 kB     00:00
+    systemd: (11/16): php-7.2.24-1.module_el8.2.0+313+b04d0a 2.1 MB/s | 1.5 MB     00:00
+    systemd: (12/16): centos-logos-httpd-85.8-2.el8.noarch.r 695 kB/s |  75 kB     00:00
+    systemd: (13/16): mailcap-2.1.48-3.el8.noarch.rpm        462 kB/s |  39 kB     00:00
+    systemd: (14/16): spawn-fcgi-1.6.3-17.el8.x86_64.rpm     481 kB/s |  24 kB     00:00
+    systemd: (15/16): php-fpm-7.2.24-1.module_el8.2.0+313+b0 1.9 MB/s | 1.6 MB     00:00
+    systemd: (16/16): php-cli-7.2.24-1.module_el8.2.0+313+b0 1.8 MB/s | 3.1 MB     00:01
+    systemd: --------------------------------------------------------------------------------
+    systemd: Total                                           3.2 MB/s | 9.0 MB     00:02
+    systemd: warning: /var/cache/dnf/epel-6c12381928511f32/packages/spawn-fcgi-1.6.3-17.el8.x86_64.rpm: Header V3 RSA/SHA256 Signature, key ID 2f86d6a1: NOKEY
+    systemd: Extra Packages for Enterprise Linux 8 - x86_64  1.6 MB/s | 1.6 kB     00:00
+    systemd: Importing GPG key 0x2F86D6A1:
+    systemd:  Userid     : "Fedora EPEL (8) <epel@fedoraproject.org>"
+    systemd:  Fingerprint: 94E2 79EB 8D8F 25B2 1810 ADF1 21EA 45AB 2F86 D6A1
+    systemd:  From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+    systemd: Key imported successfully
+    systemd: Running transaction check
+    systemd: Transaction check succeeded.
+    systemd: Running transaction test
+    systemd: Transaction test succeeded.
+    systemd: Running transaction
+    systemd:   Preparing        :                                                        1/1
+    systemd:   Installing       : php-common-7.2.24-1.module_el8.2.0+313+b04d0a66.x8    1/16
+    systemd:   Running scriptlet: httpd-filesystem-2.4.37-43.module_el8.5.0+1022+b54    2/16
+    systemd:   Installing       : httpd-filesystem-2.4.37-43.module_el8.5.0+1022+b54    2/16
+    systemd:   Installing       : apr-1.6.3-12.el8.x86_64                               3/16
+    systemd:   Running scriptlet: apr-1.6.3-12.el8.x86_64                               3/16
+    systemd:   Installing       : apr-util-bdb-1.6.1-6.el8.x86_64                       4/16
+    systemd:   Installing       : apr-util-openssl-1.6.1-6.el8.x86_64                   5/16
+    systemd:   Installing       : apr-util-1.6.1-6.el8.x86_64                           6/16
+    systemd:   Running scriptlet: apr-util-1.6.1-6.el8.x86_64                           6/16
+    systemd:   Installing       : httpd-tools-2.4.37-43.module_el8.5.0+1022+b541f3b1    7/16
+    systemd:   Installing       : php-cli-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_6    8/16
+    systemd:   Installing       : mailcap-2.1.48-3.el8.noarch                           9/16
+    systemd:   Installing       : centos-logos-httpd-85.8-2.el8.noarch                 10/16
+    systemd:   Installing       : mod_http2-1.15.7-3.module_el8.4.0+778+c970deab.x86   11/16
+    systemd:   Installing       : httpd-2.4.37-43.module_el8.5.0+1022+b541f3b1.x86_6   12/16
+    systemd:   Running scriptlet: httpd-2.4.37-43.module_el8.5.0+1022+b541f3b1.x86_6   12/16
+    systemd:   Running scriptlet: nginx-filesystem-1:1.14.1-9.module_el8.0.0+184+e34   13/16
+    systemd:   Installing       : nginx-filesystem-1:1.14.1-9.module_el8.0.0+184+e34   13/16
+    systemd:   Installing       : php-fpm-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_6   14/16
+    systemd:   Running scriptlet: php-fpm-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_6   14/16
+    systemd:   Installing       : php-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64      15/16
+    systemd:   Installing       : spawn-fcgi-1.6.3-17.el8.x86_64                       16/16
+    systemd:   Running scriptlet: spawn-fcgi-1.6.3-17.el8.x86_64                       16/16
+    systemd:   Running scriptlet: httpd-2.4.37-43.module_el8.5.0+1022+b541f3b1.x86_6   16/16
+    systemd:   Running scriptlet: spawn-fcgi-1.6.3-17.el8.x86_64                       16/16
+    systemd:   Running scriptlet: php-fpm-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_6   16/16
+    systemd:   Verifying        : apr-1.6.3-12.el8.x86_64                               1/16
+    systemd:   Verifying        : apr-util-1.6.1-6.el8.x86_64                           2/16
+    systemd:   Verifying        : apr-util-bdb-1.6.1-6.el8.x86_64                       3/16
+    systemd:   Verifying        : apr-util-openssl-1.6.1-6.el8.x86_64                   4/16
+    systemd:   Verifying        : httpd-2.4.37-43.module_el8.5.0+1022+b541f3b1.x86_6    5/16
+    systemd:   Verifying        : httpd-filesystem-2.4.37-43.module_el8.5.0+1022+b54    6/16
+    systemd:   Verifying        : httpd-tools-2.4.37-43.module_el8.5.0+1022+b541f3b1    7/16
+    systemd:   Verifying        : mod_http2-1.15.7-3.module_el8.4.0+778+c970deab.x86    8/16
+    systemd:   Verifying        : nginx-filesystem-1:1.14.1-9.module_el8.0.0+184+e34    9/16
+    systemd:   Verifying        : php-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64      10/16
+    systemd:   Verifying        : php-cli-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_6   11/16
+    systemd:   Verifying        : php-common-7.2.24-1.module_el8.2.0+313+b04d0a66.x8   12/16
+    systemd:   Verifying        : php-fpm-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_6   13/16
+    systemd:   Verifying        : centos-logos-httpd-85.8-2.el8.noarch                 14/16
+    systemd:   Verifying        : mailcap-2.1.48-3.el8.noarch                          15/16
+    systemd:   Verifying        : spawn-fcgi-1.6.3-17.el8.x86_64                       16/16
+    systemd: 
+    systemd: Installed:
+    systemd:   apr-1.6.3-12.el8.x86_64
+    systemd:   apr-util-1.6.1-6.el8.x86_64
+    systemd:   apr-util-bdb-1.6.1-6.el8.x86_64
+    systemd:   apr-util-openssl-1.6.1-6.el8.x86_64
+    systemd:   centos-logos-httpd-85.8-2.el8.noarch
+    systemd:   httpd-2.4.37-43.module_el8.5.0+1022+b541f3b1.x86_64
+    systemd:   httpd-filesystem-2.4.37-43.module_el8.5.0+1022+b541f3b1.noarch
+    systemd:   httpd-tools-2.4.37-43.module_el8.5.0+1022+b541f3b1.x86_64
+    systemd:   mailcap-2.1.48-3.el8.noarch
+    systemd:   mod_http2-1.15.7-3.module_el8.4.0+778+c970deab.x86_64
+    systemd:   nginx-filesystem-1:1.14.1-9.module_el8.0.0+184+e34fea82.noarch
+    systemd:   php-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64
+    systemd:   php-cli-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64
+    systemd:   php-common-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64
+    systemd:   php-fpm-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64
+    systemd:   spawn-fcgi-1.6.3-17.el8.x86_64
+    systemd: 
+    systemd: Complete!
+    systemd: + cat
+    systemd: + cat
+    systemd: + systemctl daemon reload
+    systemd: Unknown operation daemon.
+    systemd: + systemctl start spawn-fcgi
+    systemd: + systemctl status spawn-fcgi
+    systemd: ● spawn-fcgi.service - Spawn-fcgi startup service by Otus
+    systemd:    Loaded: loaded (/etc/systemd/system/spawn-fcgi.service; disabled; vendor preset: disabled)
+    systemd:    Active: active (running) since Mon 2023-04-03 15:59:16 UTC; 12ms ago
+    systemd:  Main PID: 3737 (php-cgi)
+    systemd:     Tasks: 1 (limit: 5970)
+    systemd:    Memory: 320.0K
+    systemd:    CGroup: /system.slice/spawn-fcgi.service
+    systemd:            └─3737 /usr/bin/php-cgi
+    systemd: 
+    systemd: Apr 03 15:59:16 systemd systemd[1]: Started Spawn-fcgi startup service by Otus.
+    systemd: + cat
+    systemd: + cat
+    systemd: + cat
+    systemd: + cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/first.conf
+    systemd: + cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/second.conf
+    systemd: + sed -i -e 's/Listen 80/Listen 8080/g' /etc/httpd/conf/second.conf
+    systemd: + sed -i -e '35 s/^/PidFile \/var\/run\/httpd-second.pid\n/;' /etc/httpd/conf/second.conf
+    systemd: + httpd -t
+    systemd: AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+    systemd: Syntax OK
+    systemd: + systemctl daemon-reload
+    systemd: + systemctl start httpd@first
+    systemd: + systemctl start httpd@second
+    systemd: + systemctl status httpd@first
+    systemd: ● httpd@first.service - The Apache HTTP Server
+    systemd:    Loaded: loaded (/usr/lib/systemd/system/httpd@.service; disabled; vendor preset: disabled)
+    systemd:    Active: active (running) since Mon 2023-04-03 15:59:16 UTC; 82ms ago
+    systemd:      Docs: man:httpd@.service(8)
+    systemd:   Process: 4085 ExecStartPre=/bin/chown root.apache /run/httpd/instance-first (code=exited, status=0/SUCCESS)
+    systemd:   Process: 4072 ExecStartPre=/bin/mkdir -m 710 -p /run/httpd/instance-first (code=exited, status=0/SUCCESS)
+    systemd:  Main PID: 4109 (httpd)
+    systemd:    Status: "Started, listening on: port 80"
+    systemd:     Tasks: 213 (limit: 5970)
+    systemd:    Memory: 34.6M
+    systemd:    CGroup: /system.slice/system-httpd.slice/httpd@first.service
+    systemd:            ├─4109 /usr/sbin/httpd -DFOREGROUND -f conf/first.conf
+    systemd:            ├─4214 /usr/sbin/httpd -DFOREGROUND -f conf/first.conf
+    systemd:            ├─4216 /usr/sbin/httpd -DFOREGROUND -f conf/first.conf
+    systemd:            ├─4217 /usr/sbin/httpd -DFOREGROUND -f conf/first.conf
+    systemd:            └─4218 /usr/sbin/httpd -DFOREGROUND -f conf/first.conf
+    systemd: 
+    systemd: Apr 03 15:59:16 systemd systemd[1]: Starting The Apache HTTP Server...
+    systemd: Apr 03 15:59:16 systemd httpd[4109]: AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+    systemd: Apr 03 15:59:16 systemd systemd[1]: Started The Apache HTTP Server.
+    systemd: Apr 03 15:59:16 systemd httpd[4109]: Server configured, listening on: port 80
+    systemd: + systemctl status httpd@second
+    systemd: ● httpd@second.service - The Apache HTTP Server
+    systemd:    Loaded: loaded (/usr/lib/systemd/system/httpd@.service; disabled; vendor preset: disabled)
+    systemd:    Active: active (running) since Mon 2023-04-03 15:59:16 UTC; 27ms ago
+    systemd:      Docs: man:httpd@.service(8)
+    systemd:   Process: 4420 ExecStartPre=/bin/chown root.apache /run/httpd/instance-second (code=exited, status=0/SUCCESS)
+    systemd:   Process: 4276 ExecStartPre=/bin/mkdir -m 710 -p /run/httpd/instance-second (code=exited, status=0/SUCCESS)
+    systemd:  Main PID: 4455 (httpd)
+    systemd:    Status: "Started, listening on: port 8080"
+    systemd:     Tasks: 125 (limit: 5970)
+    systemd:    Memory: 16.9M
+    systemd:    CGroup: /system.slice/system-httpd.slice/httpd@second.service
+    systemd:            ├─4455 /usr/sbin/httpd -DFOREGROUND -f conf/second.conf
+    systemd:            ├─4510 /usr/sbin/httpd -DFOREGROUND -f conf/second.conf
+    systemd:            ├─4511 /usr/sbin/httpd -DFOREGROUND -f conf/second.conf
+    systemd:            ├─4512 /usr/sbin/httpd -DFOREGROUND -f conf/second.conf
+    systemd:            └─4513 /usr/sbin/httpd -DFOREGROUND -f conf/second.conf
+    systemd: 
+    systemd: Apr 03 15:59:16 systemd systemd[1]: Starting The Apache HTTP Server...
+    systemd: Apr 03 15:59:16 systemd httpd[4455]: AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+    systemd: Apr 03 15:59:16 systemd systemd[1]: Started The Apache HTTP Server.
+    systemd: Apr 03 15:59:16 systemd httpd[4455]: Server configured, listening on: port 8080
+    systemd: + ss -tnulp
+    systemd: + grep httpd
+    systemd: tcp     LISTEN   0        128                    *:8080                *:*       users:(("httpd",pid=4513,fd=4),("httpd",pid=4512,fd=4),("httpd",pid=4511,fd=4),("httpd",pid=4455,fd=4))
+    systemd: tcp     LISTEN   0        128                    *:80                  *:*       users:(("httpd",pid=4218,fd=4),("httpd",pid=4217,fd=4),("httpd",pid=4216,fd=4),("httpd",pid=4109,fd=4))
+    systemd: + sleep 60
+    systemd: + cat /var/log/messages
+    systemd: + grep 'I found word'
+    systemd: Apr  3 15:58:48 localhost root[2641]: Mon Apr  3 15:58:47 UTC 2023: I found word, Master!
+    systemd: Apr  3 15:59:21 localhost root[18093]: Mon Apr  3 15:59:21 UTC 2023: I found word, Master!
+    systemd: Apr  3 15:59:55 localhost root[22365]: Mon Apr  3 15:59:55 UTC 2023: I found word, Master!
