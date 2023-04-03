@@ -1,18 +1,22 @@
-Systemd - создание unit-файла
+**Systemd - создание unit-файла**
 
-Задание
+**Задание**
 
-Написать service, который будет раз в 30 секунд мониторить лог на предмет наличия ключевого слова (файл лога и ключевое слово должны задаваться в /etc/sysconfig или в /etc/default).
-Установить spawn-fcgi и переписать init-скрипт на unit-файл (имя service должно называться так же: spawn-fcgi).
-Дополнить unit-файл httpd (он же apache2) возможностью запустить несколько инстансов сервера с разными конфигурационными файлами.
-Выполнение:
+- Написать service, который будет раз в 30 секунд мониторить лог на предмет наличия ключевого слова (файл лога и ключевое слово должны задаваться в /etc/sysconfig или в /etc/default).
+- Установить spawn-fcgi и переписать init-скрипт на unit-файл (имя service должно называться так же: spawn-fcgi).
+- Дополнить unit-файл httpd (он же apache2) возможностью запустить несколько инстансов сервера с разными конфигурационными файлами.
 
-Добавляю источник репозиториев для Centos 8, с mirrors по умолчанию ничего не устанавливается
+**Выполнение:**
 
+Добавляю источник репозиториев для Centos 8, с mirrors по умолчанию ничего не устанавливается 
+```
 sudo sed -i -e "s|mirrorlist=|#mirrorlist=|g" /etc/yum.repos.d/CentOS-*
 sudo sed -i -e "s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g" /etc/yum.repos.d/CentOS-*
-Написать service, который будет раз в 30 секунд мониторить лог на предмет наличия ключевого слова (файл лога и ключевое слово должны задаваться в /etc/sysconfig или в /etc/default).
+```
 
+**Написать service, который будет раз в 30 секунд мониторить лог на предмет наличия ключевого слова (файл лога и ключевое слово должны задаваться в /etc/sysconfig или в /etc/default).**
+
+```
 #Редактируем /etc/sysconfig/ для watchlog.service
 
 cat <<EOF > /etc/sysconfig/watchlog
@@ -80,8 +84,11 @@ systemctl start watchlog.service
 systemctl enable watchlog.timer
 systemctl status watchlog.service
 
-Установить spawn-fcgi и переписать init-скрипт на unit-файл (имя service должно называться так же: spawn-fcgi).
+```
 
+**Установить spawn-fcgi и переписать init-скрипт на unit-файл (имя service должно называться так же: spawn-fcgi).**
+
+```
 #Устанавливаем необходимые пакеты
 
 yum install -y epel-release && yum install -y spawn-fcgi php php-cli
@@ -114,8 +121,11 @@ EOF
 systemctl daemon-reload
 systemctl start spawn-fcgi
 systemctl status spawn-fcgi
-Дополнить unit-файл httpd (он же apache2) возможностью запустить несколько инстансов сервера с разными конфигурационными файлами.
+```
 
+**Дополнить unit-файл httpd (он же apache2) возможностью запустить несколько инстансов сервера с разными конфигурационными файлами.**
+
+```
 # Правим конфиг для сервиса httpd, добавляем EnvironmentFile=/etc/sysconfig/httpd-%I
 
 cat <<EOF > /usr/lib/systemd/system/httpd.service
@@ -174,3 +184,4 @@ sleep 60
 #Проверяем что сервис watchlog.service запускается по таймеру
 
 cat /var/log/messages | grep "I found word"
+```
